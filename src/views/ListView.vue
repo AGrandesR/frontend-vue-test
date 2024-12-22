@@ -1,9 +1,23 @@
 <script setup>
-import { useRouter } from 'vue-router'
-import CustomHeader from '../components/CustomHeader.vue'
-import CustomBody from '../components/CustomBody.vue'
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import CustomHeader from '../components/CustomHeader.vue';
+import CustomBody from '../components/CustomBody.vue';
 
+const clients = ref([]);
 const router = useRouter();
+
+onMounted(async () => {
+  try {
+    const response = await fetch('https://agrandesr.github.io/frontend-vue-test/api/clients.json');
+    if (!response.ok) {
+      throw new Error('Failed to fetch clients');
+    }
+    clients.value = await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+})
 
 const goToUser = (id) => {
   if (id) {
@@ -11,7 +25,7 @@ const goToUser = (id) => {
   } else {
     console.error('Invalid user ID');
   }
-};
+}
 </script>
 
 <template>
@@ -19,12 +33,15 @@ const goToUser = (id) => {
   <custom-body>
     <v-list lines="one">
       <v-list-item
-        v-for="n in 3"
-        :key="n"
-        :title="'Item ' + n"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit"
-        @click="() => goToUser(n)"
+        v-for="user in clients"
+        :key="user.id"
+        :title="`${user.givenName} ${user.familyName1}`"
+        :subtitle="user.email"
+        @click="() => goToUser(user._id)"
       ></v-list-item>
     </v-list>
   </custom-body>
 </template>
+
+<style scoped>
+</style>
