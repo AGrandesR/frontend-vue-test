@@ -1,0 +1,37 @@
+[{
+    "_id" : 1,
+    "docType" : "nif",
+    "docNum" : "11223344E",
+    "email" : "it@diguem.com",
+    "customerId" : "11111",
+    "givenName" : "Darius",
+    "familyName1" : "Landlord",
+    "phone" : "6459889765"
+}, {
+    "_id" : 2,
+    "docType" : "nif",
+    "docNum" : "55667788E",
+    "email" : "john@diguem.com",
+    "customerId" : "22222",
+    "givenName" : "John",
+    "familyName1" : "Doe",
+    "phone" : "9876543210"
+}, {
+    "_id" : 3,
+    "docType" : "nif",
+    "docNum" : "99001122E",
+    "email" : "jane@diguem.com",
+    "customerId" : "33333",
+    "givenName" : "Jane",
+    "familyName1" : "Smith",
+    "phone" : "3210987654"
+},{
+    "_id" : 4,
+    "docType" : "nif",
+    "docNum" : "33334444E",
+    "email" : "jim@diguem.com",
+    "customerId" : "44444",
+    "givenName" : "Jim",
+    "familyName1" : "Johnson",
+    "phone" : "1234567890"
+}]
