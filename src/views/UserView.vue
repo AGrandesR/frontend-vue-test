@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 
 const router = useRouter()
 const route = useRoute()
+const userId = route.params.id
 
 const search = computed({
   get() {
@@ -16,8 +17,5 @@ const search = computed({
 </script>
 
 <template>
-  <h2>AboutView</h2>
-  <label>
-    Search: <input v-model.trim="search" maxlength="20">
-  </label>
+  <p>{{userId}}</p>
 </template>
