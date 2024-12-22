@@ -3,6 +3,8 @@ import { computed, ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import CustomHeader from '../components/CustomHeader.vue'
 import CustomBody from '../components/CustomBody.vue'
+import ClientCard from '../components/ClientCard.vue'
+import EmptyCard from '../components/EmptyCard.vue'
 
 const route = useRoute()
 const userId = route.params.id
@@ -52,7 +54,17 @@ const search = computed({
 <template>
   <custom-header title="User" returnTo="/"></custom-header>
   <custom-body>
-    <p>{{JSON.stringify(client)}}</p>
-    <p v-for="product in products">{{JSON.stringify(product)}}</p>
+    <client-card  :givenName="client.givenName" :lastName1="client.familyName1" :lastName2="client.familyName2" :email="client.email" :phone="client.phone"/>
+    <empty-card>
+      <v-list lines="one">
+      <v-list-item
+        v-for="product in products"
+        :key="product._id"
+        :title="`${product.productName}`"
+        :subtitle="`Num: ${product.numeracioTerminal} - Type: ${product.productTypeName} `"
+        @click="() => goToUser(user._id)"
+      ></v-list-item>
+    </v-list>
+    </empty-card>
   </custom-body>
 </template>
