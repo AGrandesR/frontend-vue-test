@@ -1,5 +1,18 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+onMounted(() => {
+  const urlParams = new URLSearchParams(window.location.search)
+  const redirectPath = urlParams.get('gh-pages-redirect')
+
+  if (redirectPath) {
+    router.push(`/${redirectPath}`)
+  }
+})
 </script>
 
 <template>
