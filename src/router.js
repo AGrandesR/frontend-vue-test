@@ -6,11 +6,12 @@ import UserView from './views/UserView.vue'
 const routes = [
   { path: '/', component: ListView },
   { path: '/user/:id', component: UserView },
+  { path: '/:pathMatch(.*)*', component: ListView },
 ]
 
 const router = createRouter({
-  history: createWebHistory('/your-github-repo/'),
-  routes,
+  history: createWebHistory(),
+  routes
 })
 
 export default router

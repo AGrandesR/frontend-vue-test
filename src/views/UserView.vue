@@ -1,6 +1,8 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import CustomHeader from '../components/CustomHeader.vue'
+import CustomBody from '../components/CustomBody.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -17,5 +19,6 @@ const search = computed({
 </script>
 
 <template>
-  <p>{{userId}}</p>
+  <custom-header title="User" returnTo="/"></custom-header>
+  <custom-body>{{userId}}</custom-body>
 </template>

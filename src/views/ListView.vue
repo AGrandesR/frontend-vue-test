@@ -1,5 +1,7 @@
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
+import CustomHeader from '../components/CustomHeader.vue'
+import CustomBody from '../components/CustomBody.vue'
 
 const router = useRouter();
 
@@ -13,7 +15,16 @@ const goToUser = (id) => {
 </script>
 
 <template>
-  <h2>HomeView</h2>
-  <button @click="() => goToUser(1)">Go to User 1</button>
-  <button @click="() => goToUser(2)">Go to User 2</button>
+  <custom-header title="List"></custom-header>
+  <custom-body>
+    <v-list lines="one">
+      <v-list-item
+        v-for="n in 3"
+        :key="n"
+        :title="'Item ' + n"
+        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit"
+        @click="() => goToUser(n)"
+      ></v-list-item>
+    </v-list>
+  </custom-body>
 </template>
