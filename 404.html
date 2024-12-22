@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page not found</title>
     <script>
-      // Redirigir siempre a index.html, donde Vue Router manejará las rutas
-      alert(window.location)
-      window.location.replace('/frontend-vue-test/index.html')
+      const path = window.location.pathname; 
+        const slicePath = path.slice('/frontend-vue-test'.length)
+        const slicePathWithoutSlash = slicePath.startsWith('/') ? slicePath.slice(1) : slicePath;
+        window.location.replace(`/frontend-vue-test/?gh-pages-redirect=${slicePathWithoutSlash}`)
     </script>
   </head>
   <body>
